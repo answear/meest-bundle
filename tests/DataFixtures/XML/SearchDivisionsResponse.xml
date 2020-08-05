@@ -1,0 +1,99 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:searchDivisionsResponse xmlns:ns2="http://logic.meestgroup.com/">
+            <return>
+                <active>true</active>
+                <cityDescriptionEN>Vyshgorod</cityDescriptionEN>
+                <cityDescriptionRU>Вышгород</cityDescriptionRU>
+                <cityDescriptionUA>Вишгород</cityDescriptionUA>
+                <descriptionRU>г.Вышгород,ул.Грушевского 6-А</descriptionRU>
+                <descriptionUA>м.Вишгород,вул.Грушевського 6-А</descriptionUA>
+                <districtDescriptionEN>Vyshgorodskyi</districtDescriptionEN>
+                <districtDescriptionRU>Вышгородский</districtDescriptionRU>
+                <districtDescriptionUA>Вишгородський</districtDescriptionUA>
+                <divisionCode>8225</divisionCode>
+                <divisionIDRRef>0x80e71c98ec13526111e9f1b5a7d55fdd</divisionIDRRef>
+                <divisionType>DIVISION_PICKPOINT</divisionType>
+                <flat></flat>
+                <house>6-А</house>
+                <latitude>50.5885820</latitude>
+                <limitweight>30.00</limitweight>
+                <longitude>30.4866250</longitude>
+                <payTypeCard>false</payTypeCard>
+                <payTypeCash>true</payTypeCash>
+                <regionDescriptionEN>KYIVS`KA</regionDescriptionEN>
+                <regionDescriptionRU>КИЕВСКАЯ</regionDescriptionRU>
+                <regionDescriptionUA>КИЇВСЬКА</regionDescriptionUA>
+                <streetDescriptionEN>Grushevskogo</streetDescriptionEN>
+                <streetDescriptionRU>Грушевского</streetDescriptionRU>
+                <streetDescriptionUA>Грушевського</streetDescriptionUA>
+                <streetTypeRU>Грушевского</streetTypeRU>
+                <streetTypeUA>вул.</streetTypeUA>
+                <terminalCash>false</terminalCash>
+                <workingHoursUa>Пн 09:00 - 19:00; Вт 09:00 - 19:00; Ср 09:00 - 19:00; Чт 09:00 - 19:00; Пт 09:00 - 19:00; Сб --:-- - --:--; Нд --:-- - --:--</workingHoursUa>
+            </return>
+            <return>
+                <active>true</active>
+                <cityDescriptionEN>Kryvyi Rig</cityDescriptionEN>
+                <cityDescriptionRU>Кривой Рог</cityDescriptionRU>
+                <cityDescriptionUA>Кривий Ріг</cityDescriptionUA>
+                <descriptionRU>г.Кривой Рог,ул.Тесленко 13 прим. 77</descriptionRU>
+                <descriptionUA>м.Кривий Ріг,вул.Тесленка 13 прим. 77</descriptionUA>
+                <districtDescriptionEN>Kryvyi Rig</districtDescriptionEN>
+                <districtDescriptionRU>Кривой Рог</districtDescriptionRU>
+                <districtDescriptionUA>Кривий Ріг</districtDescriptionUA>
+                <divisionCode>9432</divisionCode>
+                <divisionIDRRef>0x80c6000c29800ae711ea758c27a64b5b</divisionIDRRef>
+                <divisionType>DIVISION_PICKPOINT</divisionType>
+                <flat></flat>
+                <house>13 прим. 77</house>
+                <latitude>47.9377160</latitude>
+                <limitweight>0.00</limitweight>
+                <longitude>33.4092340</longitude>
+                <payTypeCard>false</payTypeCard>
+                <payTypeCash>true</payTypeCash>
+                <regionDescriptionEN>DNIPROPETROVS`KA</regionDescriptionEN>
+                <regionDescriptionRU>ДНЕПРОПЕТРОВСКАЯ</regionDescriptionRU>
+                <regionDescriptionUA>ДНІПРОПЕТРОВСЬКА</regionDescriptionUA>
+                <streetDescriptionEN>Teslenka</streetDescriptionEN>
+                <streetDescriptionRU>Тесленко</streetDescriptionRU>
+                <streetDescriptionUA>Тесленка</streetDescriptionUA>
+                <streetTypeRU>Тесленко</streetTypeRU>
+                <streetTypeUA>вул.</streetTypeUA>
+                <terminalCash>false</terminalCash>
+                <workingHoursUa>Пн 09:00 - 19:00; Вт 09:00 - 19:00; Ср 09:00 - 19:00; Чт 09:00 - 19:00; Пт 09:00 - 19:00; Сб 09:00 - 15:00; Нд --:-- - --:--</workingHoursUa>
+            </return>
+            <return>
+                <active>true</active>
+                <cityDescriptionEN>Kryvyi Rig</cityDescriptionEN>
+                <cityDescriptionRU>Кривой Рог</cityDescriptionRU>
+                <cityDescriptionUA>Кривий Ріг</cityDescriptionUA>
+                <descriptionRU>г.Кривой Рог,Просп.Мира 33</descriptionRU>
+                <descriptionUA>м.Кривий Ріг,Просп.Миру 33</descriptionUA>
+                <districtDescriptionEN>Kryvyi Rig</districtDescriptionEN>
+                <districtDescriptionRU>Кривой Рог</districtDescriptionRU>
+                <districtDescriptionUA>Кривий Ріг</districtDescriptionUA>
+                <divisionCode>3411</divisionCode>
+                <divisionIDRRef>0x80cc1c98ec13526111e7b80ab095ab14</divisionIDRRef>
+                <divisionType>DIVISION_PICKPOINT</divisionType>
+                <flat></flat>
+                <house>33</house>
+                <latitude>47.9096770</latitude>
+                <limitweight>30.00</limitweight>
+                <longitude>33.3890410</longitude>
+                <payTypeCard>false</payTypeCard>
+                <payTypeCash>true</payTypeCash>
+                <regionDescriptionEN>DNIPROPETROVS`KA</regionDescriptionEN>
+                <regionDescriptionRU>ДНЕПРОПЕТРОВСКАЯ</regionDescriptionRU>
+                <regionDescriptionUA>ДНІПРОПЕТРОВСЬКА</regionDescriptionUA>
+                <streetDescriptionEN>Myru</streetDescriptionEN>
+                <streetDescriptionRU>Мира</streetDescriptionRU>
+                <streetDescriptionUA>Миру</streetDescriptionUA>
+                <streetTypeRU>Мира</streetTypeRU>
+                <streetTypeUA>Просп.</streetTypeUA>
+                <terminalCash>false</terminalCash>
+                <workingHoursUa>Пн 09:00 - 17:00; Вт 09:00 - 17:00; Ср 09:00 - 17:00; Чт 09:00 - 17:00; Пт 09:00 - 17:00; Сб --:-- - --:--; Нд --:-- - --:--</workingHoursUa>
+            </return>
+        </ns2:searchDivisionsResponse>
+    </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://logic.meestgroup.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="services/MeestPoland" targetNamespace="http://logic.meestgroup.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://logic.meestgroup.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://logic.meestgroup.com/">
+  <xs:element name="createManifest" type="tns:createManifest"/>
+  <xs:element name="createManifestResponse" type="tns:createManifestResponse"/>
+  <xs:element name="createParcel" type="tns:createParcel"/>
+  <xs:element name="createParcelResponse" type="tns:createParcelResponse"/>
+  <xs:element name="createReturn" type="tns:createReturn"/>
+  <xs:element name="createReturnResponse" type="tns:createReturnResponse"/>
+  <xs:element name="deleteParcel" type="tns:deleteParcel"/>
+  <xs:element name="deleteParcelResponse" type="tns:deleteParcelResponse"/>
+  <xs:element name="findCOD" type="tns:findCOD"/>
+  <xs:element name="findCODById" type="tns:findCODById"/>
+  <xs:element name="findCODByIdResponse" type="tns:findCODByIdResponse"/>
+  <xs:element name="findCODByInternalParcelNumber" type="tns:findCODByInternalParcelNumber"/>
+  <xs:element name="findCODByInternalParcelNumberResponse" type="tns:findCODByInternalParcelNumberResponse"/>
+  <xs:element name="findCODResponse" type="tns:findCODResponse"/>
+  <xs:element name="findInvoiceById" type="tns:findInvoiceById"/>
+  <xs:element name="findInvoiceByIdResponse" type="tns:findInvoiceByIdResponse"/>
+  <xs:element name="findInvoices" type="tns:findInvoices"/>
+  <xs:element name="findInvoicesResponse" type="tns:findInvoicesResponse"/>
+  <xs:element name="findParcelByBarcode" type="tns:findParcelByBarcode"/>
+  <xs:element name="findParcelByBarcodeResponse" type="tns:findParcelByBarcodeResponse"/>
+  <xs:element name="findParcelById" type="tns:findParcelById"/>
+  <xs:element name="findParcelByIdResponse" type="tns:findParcelByIdResponse"/>
+  <xs:element name="findParcelsByDate" type="tns:findParcelsByDate"/>
+  <xs:element name="findParcelsByDateResponse" type="tns:findParcelsByDateResponse"/>
+  <xs:element name="findReturnById" type="tns:findReturnById"/>
+  <xs:element name="findReturnByIdResponse" type="tns:findReturnByIdResponse"/>
+  <xs:element name="findReturnByReturnsNumber" type="tns:findReturnByReturnsNumber"/>
+  <xs:element name="findReturnByReturnsNumberResponse" type="tns:findReturnByReturnsNumberResponse"/>
+  <xs:element name="findReturns" type="tns:findReturns"/>
+  <xs:element name="findReturnsResponse" type="tns:findReturnsResponse"/>
+  <xs:element name="getApiVersion" type="tns:getApiVersion"/>
+  <xs:element name="getApiVersionResponse" type="tns:getApiVersionResponse"/>
+  <xs:element name="printAllDocuments" type="tns:printAllDocuments"/>
+  <xs:element name="printAllDocumentsResponse" type="tns:printAllDocumentsResponse"/>
+  <xs:element name="printCn23" type="tns:printCn23"/>
+  <xs:element name="printCn23Response" type="tns:printCn23Response"/>
+  <xs:element name="printCp71" type="tns:printCp71"/>
+  <xs:element name="printCp71Response" type="tns:printCp71Response"/>
+  <xs:element name="printTfp3" type="tns:printTfp3"/>
+  <xs:element name="printTfp3Response" type="tns:printTfp3Response"/>
+  <xs:element name="searchCitiesListByPostCode" type="tns:searchCitiesListByPostCode"/>
+  <xs:element name="searchCitiesListByPostCodeResponse" type="tns:searchCitiesListByPostCodeResponse"/>
+  <xs:element name="searchCity" type="tns:searchCity"/>
+  <xs:element name="searchCityByPostCode" type="tns:searchCityByPostCode"/>
+  <xs:element name="searchCityByPostCodeResponse" type="tns:searchCityByPostCodeResponse"/>
+  <xs:element name="searchCityResponse" type="tns:searchCityResponse"/>
+  <xs:element name="searchDivisions" type="tns:searchDivisions"/>
+  <xs:element name="searchDivisionsByLocalization" type="tns:searchDivisionsByLocalization"/>
+  <xs:element name="searchDivisionsByLocalizationResponse" type="tns:searchDivisionsByLocalizationResponse"/>
+  <xs:element name="searchDivisionsResponse" type="tns:searchDivisionsResponse"/>
+  <xs:element name="searchStreetByNameAndCityIdRef" type="tns:searchStreetByNameAndCityIdRef"/>
+  <xs:element name="searchStreetByNameAndCityIdRefResponse" type="tns:searchStreetByNameAndCityIdRefResponse"/>
+  <xs:element name="trackingParcel" type="tns:trackingParcel"/>
+  <xs:element name="trackingParcelResponse" type="tns:trackingParcelResponse"/>
+  <xs:element name="validateParcel" type="tns:validateParcel"/>
+  <xs:element name="validateParcelResponse" type="tns:validateParcelResponse"/>
+  <xs:complexType name="searchCity">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCityResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:cityApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cityApiBean">
+    <xs:sequence>
+      <xs:element name="cityIdRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="descriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="descriptionRU" type="xs:string"/>
+      <xs:element name="descriptionUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="districtDescriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="districtDescriptionRU" type="xs:string"/>
+      <xs:element name="districtDescriptionUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="regionDescriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="regionDescriptionRU" type="xs:string"/>
+      <xs:element name="regionDescriptionUA" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchStreetByNameAndCityIdRef">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchStreetByNameAndCityIdRefResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:streetApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="streetApiBean">
+    <xs:sequence>
+      <xs:element name="cityIdRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="descriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="descriptionRU" type="xs:string"/>
+      <xs:element name="descriptionUA" type="xs:string"/>
+      <xs:element name="streetIdRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetTypeRU" type="xs:string"/>
+      <xs:element name="streetTypeUA" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="trackingParcel">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="trackingParcelResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:parcelTrackingApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parcelTrackingApiBean">
+    <xs:sequence>
+      <xs:element name="actionId" type="xs:int"/>
+      <xs:element minOccurs="0" name="additionalDescription" type="xs:string"/>
+      <xs:element name="eventDate" type="xs:dateTime"/>
+      <xs:element name="eventDescription" type="xs:string"/>
+      <xs:element name="idParcel" type="xs:long"/>
+      <xs:element name="minutesFromPreviouslyEvent" type="xs:string"/>
+      <xs:element name="minutesFromStart" type="xs:string"/>
+      <xs:element minOccurs="0" name="statusCode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchDivisions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:divisionTypeEnum"/>
+      <xs:element minOccurs="0" name="arg2" type="tns:payTypeHelper"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="payTypeHelper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cardPayType" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="cashPayType" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="terminalCash" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchDivisionsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:divisionApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="divisionApiBean">
+    <xs:sequence>
+      <xs:element name="active" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="cityDescriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="cityDescriptionRU" type="xs:string"/>
+      <xs:element name="cityDescriptionUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="descriptionRU" type="xs:string"/>
+      <xs:element name="descriptionUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="districtDescriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="districtDescriptionRU" type="xs:string"/>
+      <xs:element name="districtDescriptionUA" type="xs:string"/>
+      <xs:element name="divisionCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="divisionIDRRef" type="xs:string"/>
+      <xs:element name="divisionType" type="tns:divisionTypeEnum"/>
+      <xs:element minOccurs="0" name="flat" type="xs:string"/>
+      <xs:element name="house" type="xs:string"/>
+      <xs:element name="latitude" type="xs:string"/>
+      <xs:element name="limitweight" type="xs:string"/>
+      <xs:element name="longitude" type="xs:string"/>
+      <xs:element name="payTypeCard" type="xs:boolean"/>
+      <xs:element name="payTypeCash" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="regionDescriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="regionDescriptionRU" type="xs:string"/>
+      <xs:element name="regionDescriptionUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetDescriptionEN" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetDescriptionRU" type="xs:string"/>
+      <xs:element name="streetDescriptionUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetTypeRU" type="xs:string"/>
+      <xs:element name="streetTypeUA" type="xs:string"/>
+      <xs:element name="terminalCash" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="workingHoursUa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printCn23">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printCn23Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printTfp3">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printTfp3Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findReturnById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findReturnByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:returnsApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="returnsApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="bankCard" type="xs:string"/>
+      <xs:element minOccurs="0" name="checkDeliveryCosts" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="clientCode" type="xs:string"/>
+      <xs:element name="createDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dispatchNumber" type="xs:string"/>
+      <xs:element name="idParcel" type="xs:long"/>
+      <xs:element minOccurs="0" name="idReturn" type="xs:long"/>
+      <xs:element name="moneyTransferType" type="tns:moneyTransferTypeEnum"/>
+      <xs:element minOccurs="0" name="notes" type="xs:string"/>
+      <xs:element name="parcelBarCode" type="xs:string"/>
+      <xs:element name="parcelInternalNumber" type="xs:string"/>
+      <xs:element name="parcelNumber" type="xs:string"/>
+      <xs:element name="parcelPrice" type="xs:double"/>
+      <xs:element name="parcelValue" type="xs:double"/>
+      <xs:element name="parcelWeight" type="xs:double"/>
+      <xs:element minOccurs="0" name="passportNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="passportPlaceDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="passportSeries" type="xs:string"/>
+      <xs:element name="phoneNumber" type="xs:string"/>
+      <xs:element name="processDataAcceptation" type="xs:string"/>
+      <xs:element minOccurs="0" name="receiverAddress" type="tns:addressesEvidenceApiBean"/>
+      <xs:element minOccurs="0" name="receiverName" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="returnPositions" type="tns:returnsPositionApiBean"/>
+      <xs:element minOccurs="0" name="returnsBarcode" type="xs:string"/>
+      <xs:element name="returnsDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="returnsDetails" type="xs:string"/>
+      <xs:element name="returnsNumber" type="xs:string"/>
+      <xs:element name="returnsReason" type="tns:returnsReasonEnum"/>
+      <xs:element name="returnsStatus" type="tns:returnsStatusEnum"/>
+      <xs:element name="returnsType" type="tns:returnsTypeEnum"/>
+      <xs:element minOccurs="0" name="taxNumber" type="xs:string"/>
+      <xs:element name="valueEur" type="xs:double"/>
+      <xs:element name="valueUah" type="xs:double"/>
+      <xs:element minOccurs="0" name="valueWords" type="xs:string"/>
+      <xs:element name="weight" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addressesEvidenceApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apartment" type="xs:string"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="cityIdRef" type="xs:string"/>
+      <xs:element name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="countryIdRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="district" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="house" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="notice" type="xs:string"/>
+      <xs:element name="phone" type="xs:string"/>
+      <xs:element minOccurs="0" name="postCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="postOffice" type="xs:string"/>
+      <xs:element minOccurs="0" name="province" type="xs:string"/>
+      <xs:element minOccurs="0" name="street" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetIdRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetWithHouseNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="streetWithHouseNumberSeparator" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="returnsPositionApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="brand" type="xs:string"/>
+      <xs:element minOccurs="0" name="comment" type="xs:string"/>
+      <xs:element name="count" type="xs:double"/>
+      <xs:element name="countryCode" type="xs:string"/>
+      <xs:element name="createDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="customsCode" type="xs:string"/>
+      <xs:element name="idReturn" type="xs:long"/>
+      <xs:element minOccurs="0" name="idReturnPosition" type="xs:long"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="nameUk" type="xs:string"/>
+      <xs:element name="productEan" type="xs:string"/>
+      <xs:element name="productSize" type="xs:string"/>
+      <xs:element name="returnsNumber" type="xs:string"/>
+      <xs:element name="returnsPositionReason" type="tns:returnsPositionReasonEnum"/>
+      <xs:element name="valueEur" type="xs:double"/>
+      <xs:element name="valueUah" type="xs:double"/>
+      <xs:element name="weight" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createParcel">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:parcelApiBean"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parcelApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="attribute" type="xs:string"/>
+      <xs:element minOccurs="0" name="barCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="contentsType" type="tns:contentsTypeEnum"/>
+      <xs:element minOccurs="0" name="createdDate" type="xs:dateTime"/>
+      <xs:element name="currencyName" type="tns:currencyNameEnum"/>
+      <xs:element minOccurs="0" name="deliveryAddress" type="tns:addressesEvidenceApiBean"/>
+      <xs:element name="deliveryCostEur" type="xs:double"/>
+      <xs:element name="deliveryCostUah" type="xs:double"/>
+      <xs:element minOccurs="0" name="deliveryDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="deliveryNumber" type="xs:string"/>
+      <xs:element name="deliveryTypeEnum" type="tns:parcelDeliveryTypeEnum"/>
+      <xs:element minOccurs="0" name="dispatchDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dispatchNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="divisionIDRRef" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="height" type="xs:double"/>
+      <xs:element minOccurs="0" name="idParcel" type="xs:long"/>
+      <xs:element minOccurs="0" name="length" type="xs:double"/>
+      <xs:element minOccurs="0" name="note" type="xs:string"/>
+      <xs:element minOccurs="0" name="parcelDocumentsLink" type="xs:string"/>
+      <xs:element minOccurs="0" name="parcelNumber" type="xs:string"/>
+      <xs:element name="parcelNumberInternal" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="parcelPositionApiBeans" type="tns:parcelPositionApiBean"/>
+      <xs:element minOccurs="0" name="parcelStatusEnum" type="tns:apiStatusEnum"/>
+      <xs:element name="receiverEmail" type="xs:string"/>
+      <xs:element name="receiverName" type="xs:string"/>
+      <xs:element name="recipentAddress" type="tns:addressesEvidenceApiBean"/>
+      <xs:element minOccurs="0" name="senderAddress" type="tns:addressesEvidenceApiBean"/>
+      <xs:element name="summaCodEur" type="xs:double"/>
+      <xs:element name="summaCodUah" type="xs:double"/>
+      <xs:element name="value" type="xs:double"/>
+      <xs:element name="weight" type="xs:double"/>
+      <xs:element minOccurs="0" name="width" type="xs:double"/>
+      <xs:element name="zaUa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parcelPositionApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="brand" type="xs:string"/>
+      <xs:element name="count" type="xs:double"/>
+      <xs:element name="countryCode" type="xs:string"/>
+      <xs:element name="customCode" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="nameUk" type="xs:string"/>
+      <xs:element name="productEan" type="xs:string"/>
+      <xs:element name="productSize" type="xs:string"/>
+      <xs:element name="value" type="xs:double"/>
+      <xs:element name="valueUah" type="xs:double"/>
+      <xs:element name="weight" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createParcelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:parcelResultApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parcelResultApiBean">
+    <xs:sequence>
+      <xs:element name="apiStatusEnum" type="tns:apiStatusEnum"/>
+      <xs:element minOccurs="0" name="barCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="idParcel" type="xs:long"/>
+      <xs:element minOccurs="0" name="parcelDocumentsLink" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCODById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCODByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cashOnDeliveryApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cashOnDeliveryApiBean">
+    <xs:sequence>
+      <xs:element name="COD" type="xs:double"/>
+      <xs:element name="CODPaid" type="xs:double"/>
+      <xs:element name="createDate" type="xs:dateTime"/>
+      <xs:element name="deliveryDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="exchangeRate" type="xs:double"/>
+      <xs:element name="idCashOnDelivery" type="xs:long"/>
+      <xs:element minOccurs="0" name="idInvoice" type="xs:long"/>
+      <xs:element name="idParcel" type="xs:long"/>
+      <xs:element minOccurs="0" name="importFileName" type="xs:string"/>
+      <xs:element name="internalParcelNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="invoiceNumber" type="xs:string"/>
+      <xs:element name="parcelBarCode" type="xs:string"/>
+      <xs:element name="parcelNumber" type="xs:string"/>
+      <xs:element name="value" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findParcelById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findParcelByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:parcelApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findInvoiceById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findInvoiceByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:invoiceApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoiceApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="assignedPdfFilePublicPath" type="xs:string"/>
+      <xs:element minOccurs="0" name="bankAccountAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="bankAccountName" type="xs:string"/>
+      <xs:element minOccurs="0" name="clientAddress" type="xs:string"/>
+      <xs:element minOccurs="0" name="clientApartment" type="xs:string"/>
+      <xs:element name="clientCity" type="xs:string"/>
+      <xs:element name="clientHouse" type="xs:string"/>
+      <xs:element name="clientName" type="xs:string"/>
+      <xs:element name="clientNip" type="xs:string"/>
+      <xs:element name="clientPostCode" type="xs:string"/>
+      <xs:element name="clientPostOffice" type="xs:string"/>
+      <xs:element name="clientStreet" type="xs:string"/>
+      <xs:element name="createDate" type="xs:dateTime"/>
+      <xs:element name="currency" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="dispatchRegisterNumber" type="xs:string"/>
+      <xs:element name="idInvoice" type="xs:long"/>
+      <xs:element minOccurs="0" name="incotermsType" type="xs:string"/>
+      <xs:element name="invoiceDate" type="xs:dateTime"/>
+      <xs:element name="invoiceName" type="xs:string"/>
+      <xs:element name="invoiceNumber" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" name="invoicePositionsApiBeans" type="tns:invoicePositionApiBean"/>
+      <xs:element name="invoiceType" type="tns:invoiceTypeEnum"/>
+      <xs:element name="paymentDate" type="xs:dateTime"/>
+      <xs:element name="paymentType" type="tns:paymentTypeEnum"/>
+      <xs:element name="paymentTypeName" type="xs:string"/>
+      <xs:element name="pdfFilePublicPath" type="xs:string"/>
+      <xs:element name="pricePaid" type="xs:double"/>
+      <xs:element minOccurs="0" name="sellerApartment" type="xs:string"/>
+      <xs:element name="sellerCity" type="xs:string"/>
+      <xs:element name="sellerHouse" type="xs:string"/>
+      <xs:element name="sellerName" type="xs:string"/>
+      <xs:element name="sellerNip" type="xs:string"/>
+      <xs:element name="sellerPostCode" type="xs:string"/>
+      <xs:element name="sellerPostOffice" type="xs:string"/>
+      <xs:element name="sellerStreet" type="xs:string"/>
+      <xs:element name="status" type="tns:statusEnum"/>
+      <xs:element name="totalBrutto" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalColli" type="xs:long"/>
+      <xs:element name="totalCounter" type="xs:long"/>
+      <xs:element name="totalGrossWeight" type="xs:double"/>
+      <xs:element name="totalNetto" type="xs:double"/>
+      <xs:element name="totalPriceWords" type="xs:string"/>
+      <xs:element name="totalWeight" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="invoicePositionApiBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="counter" type="xs:long"/>
+      <xs:element minOccurs="0" name="countryCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="customCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="idInvoicePositions" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="nameUk" type="xs:string"/>
+      <xs:element minOccurs="0" name="orderNumber" type="xs:long"/>
+      <xs:element minOccurs="0" name="parcelNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="parcelNumberInternal" type="xs:string"/>
+      <xs:element minOccurs="0" name="pkwiu" type="xs:string"/>
+      <xs:element minOccurs="0" name="priceBrutto" type="xs:double"/>
+      <xs:element minOccurs="0" name="priceNetto" type="xs:double"/>
+      <xs:element minOccurs="0" name="productEan" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="tns:statusEnum"/>
+      <xs:element minOccurs="0" name="symbol" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalBrutto" type="xs:double"/>
+      <xs:element minOccurs="0" name="totalNetto" type="xs:double"/>
+      <xs:element minOccurs="0" name="unitType" type="xs:string"/>
+      <xs:element minOccurs="0" name="vat" type="xs:double"/>
+      <xs:element minOccurs="0" name="weight" type="xs:double"/>
+      <xs:element minOccurs="0" name="zaUa" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createManifest">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:manifestApiBean"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="manifestApiBean">
+    <xs:sequence>
+      <xs:element name="allowValueExceed" type="xs:boolean"/>
+      <xs:element name="allowValueExceedPerPerson" type="xs:boolean"/>
+      <xs:element name="allowWeightExceed" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="closeManifest" type="xs:boolean"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element minOccurs="0" name="dispatchDate" type="xs:dateTime"/>
+      <xs:element maxOccurs="unbounded" name="parcelNumbers" type="xs:string"/>
+      <xs:element minOccurs="0" name="transportID" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="tns:dispatchRegisterTypeEnum"/>
+      <xs:element minOccurs="0" name="weight" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createManifestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:manifestApiBeanResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="manifestApiBeanResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dispatchRegisterNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="idDispatchRegister" type="xs:long"/>
+      <xs:element minOccurs="0" name="idInvoice" type="xs:long"/>
+      <xs:element minOccurs="0" name="invoiceNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createReturn">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:returnsApiBean"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createReturnResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:returnResultApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="returnResultApiBean">
+    <xs:sequence>
+      <xs:element name="apiStatusEnum" type="tns:apiStatusEnum"/>
+      <xs:element minOccurs="0" name="errorDescription" type="xs:string"/>
+      <xs:element minOccurs="0" name="idReturn" type="xs:long"/>
+      <xs:element minOccurs="0" name="mrnExportNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="returnsNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findReturnByReturnsNumber">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findReturnByReturnsNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:returnsApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printCp71">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printCp71Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCityByPostCode">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCityByPostCodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cityApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCitiesListByPostCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchCitiesListByPostCodeResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:cityApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findReturns">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findReturnsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:returnsApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteParcel">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteParcelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:parcelResultApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCOD">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCODResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:cashOnDeliveryApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getApiVersion">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="getApiVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findInvoices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findInvoicesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:invoiceApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateParcel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:parcelApiBean"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validateParcelResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:parcelResultApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCODByInternalParcelNumber">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findCODByInternalParcelNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cashOnDeliveryApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printAllDocuments">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="printAllDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchDivisionsByLocalization">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="searchDivisionsByLocalizationResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:divisionApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findParcelsByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findParcelsByDateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:parcelApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findParcelByBarcode">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="findParcelByBarcodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:parcelApiBean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="divisionTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DIVISION"/>
+      <xs:enumeration value="DIVISION_PICKPOINT"/>
+      <xs:enumeration value="POSTSTATION"/>
+      <xs:enumeration value="PICK_STATION"/>
+      <xs:enumeration value="MEEST_PARTNER_PICKUP_POINT_NP"/>
+      <xs:enumeration value="MEEST_PARTNER_PICKUP_POINT_UP"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="moneyTransferTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CARD_ADMISSION"/>
+      <xs:enumeration value="BANK_MONEY_TRANSFER"/>
+      <xs:enumeration value="POSTAL_MONEY_TRANSFER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="returnsPositionReasonEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INCORRECT_SIZE"/>
+      <xs:enumeration value="INCORRECT_PRODUCT"/>
+      <xs:enumeration value="POOR_QUALITY"/>
+      <xs:enumeration value="RECLAMATION"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="returnsReasonEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_DELIVERED"/>
+      <xs:enumeration value="COMPLAINT"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="returnsStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCEPTED"/>
+      <xs:enumeration value="REJECTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="returnsTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FULL"/>
+      <xs:enumeration value="PARTIAL"/>
+      <xs:enumeration value="NOT_DELIVERED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="contentsTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OTHER"/>
+      <xs:enumeration value="GIFT"/>
+      <xs:enumeration value="DOCUMENTS"/>
+      <xs:enumeration value="MERCHANDISE"/>
+      <xs:enumeration value="RETURNED_MARCHENDISE"/>
+      <xs:enumeration value="SAMPLE"/>
+      <xs:enumeration value="HUMANITARIAN_DONATION"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="currencyNameEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PLN"/>
+      <xs:enumeration value="EUR"/>
+      <xs:enumeration value="USD"/>
+      <xs:enumeration value="GBP"/>
+      <xs:enumeration value="UAH"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="parcelDeliveryTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="COURRIER"/>
+      <xs:enumeration value="SERVICE_POINT"/>
+      <xs:enumeration value="POSTAL_SERVICE_APT"/>
+      <xs:enumeration value="MEEST_PARTNER_PICKUP_POINT_NP"/>
+      <xs:enumeration value="MEEST_PARTNER_PICKUP_POINT_UP"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="apiStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="ERROR"/>
+      <xs:enumeration value="VALIDATION_ERROR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="DELETED"/>
+      <xs:enumeration value="BLOCKED"/>
+      <xs:enumeration value="UNSIGNED"/>
+      <xs:enumeration value="NOT_ACTIVATED"/>
+      <xs:enumeration value="DEACTIVATED"/>
+      <xs:enumeration value="TEST"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="invoiceTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FS"/>
+      <xs:enumeration value="FS_NO_VAT"/>
+      <xs:enumeration value="FV_ZAL"/>
+      <xs:enumeration value="FV_KON"/>
+      <xs:enumeration value="FK_POSITIONS"/>
+      <xs:enumeration value="FK_DATA"/>
+      <xs:enumeration value="PAR"/>
+      <xs:enumeration value="PF"/>
+      <xs:enumeration value="NK"/>
+      <xs:enumeration value="FM"/>
+      <xs:enumeration value="PROF"/>
+      <xs:enumeration value="FV_WEW"/>
+      <xs:enumeration value="FZ"/>
+      <xs:enumeration value="FZ_NO_VAT"/>
+      <xs:enumeration value="DW"/>
+      <xs:enumeration value="PROF_REGISTER_IMP"/>
+      <xs:enumeration value="PROF_REGISTER_EXP"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="paymentTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CASCH"/>
+      <xs:enumeration value="TRANSFER"/>
+      <xs:enumeration value="ON_DELIVERY"/>
+      <xs:enumeration value="DEFERRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="numerationTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FS"/>
+      <xs:enumeration value="TEST"/>
+      <xs:enumeration value="FS_NO_VAT"/>
+      <xs:enumeration value="FM"/>
+      <xs:enumeration value="PROF_IMP"/>
+      <xs:enumeration value="PROF_EXP"/>
+      <xs:enumeration value="FK"/>
+      <xs:enumeration value="FV_ZAL"/>
+      <xs:enumeration value="FV_WEW"/>
+      <xs:enumeration value="PAR"/>
+      <xs:enumeration value="PF"/>
+      <xs:enumeration value="NK"/>
+      <xs:enumeration value="FZ"/>
+      <xs:enumeration value="FZ_NO_VAT"/>
+      <xs:enumeration value="DW"/>
+      <xs:enumeration value="RMA"/>
+      <xs:enumeration value="DISPATCH_INCOMING"/>
+      <xs:enumeration value="DISPATCH_OUTGOING"/>
+      <xs:enumeration value="RETURNS"/>
+      <xs:enumeration value="TRANSPORT"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dispatchRegisterTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INCOMING"/>
+      <xs:enumeration value="OUTGOING"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MeestException" type="tns:MeestException"/>
+  <xs:complexType name="MeestException">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="args" type="xs:anyType"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="findReturnByIdResponse">
+    <wsdl:part element="tns:findReturnByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchDivisionsByLocalizationResponse">
+    <wsdl:part element="tns:searchDivisionsByLocalizationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchStreetByNameAndCityIdRef">
+    <wsdl:part element="tns:searchStreetByNameAndCityIdRef" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackingParcel">
+    <wsdl:part element="tns:trackingParcel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchDivisions">
+    <wsdl:part element="tns:searchDivisions" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findReturnByReturnsNumberResponse">
+    <wsdl:part element="tns:findReturnByReturnsNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printCn23">
+    <wsdl:part element="tns:printCn23" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printTfp3">
+    <wsdl:part element="tns:printTfp3" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchStreetByNameAndCityIdRefResponse">
+    <wsdl:part element="tns:searchStreetByNameAndCityIdRefResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteParcelResponse">
+    <wsdl:part element="tns:deleteParcelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MeestException">
+    <wsdl:part element="tns:MeestException" name="MeestException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findReturnById">
+    <wsdl:part element="tns:findReturnById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchDivisionsResponse">
+    <wsdl:part element="tns:searchDivisionsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createParcel">
+    <wsdl:part element="tns:createParcel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCODById">
+    <wsdl:part element="tns:findCODById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findParcelById">
+    <wsdl:part element="tns:findParcelById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApiVersionResponse">
+    <wsdl:part element="tns:getApiVersionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="trackingParcelResponse">
+    <wsdl:part element="tns:trackingParcelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findInvoiceByIdResponse">
+    <wsdl:part element="tns:findInvoiceByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createParcelResponse">
+    <wsdl:part element="tns:createParcelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printTfp3Response">
+    <wsdl:part element="tns:printTfp3Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCODByInternalParcelNumberResponse">
+    <wsdl:part element="tns:findCODByInternalParcelNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createReturn">
+    <wsdl:part element="tns:createReturn" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findReturnByReturnsNumber">
+    <wsdl:part element="tns:findReturnByReturnsNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findInvoicesResponse">
+    <wsdl:part element="tns:findInvoicesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCityByPostCode">
+    <wsdl:part element="tns:searchCityByPostCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCitiesListByPostCode">
+    <wsdl:part element="tns:searchCitiesListByPostCode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCOD">
+    <wsdl:part element="tns:findCOD" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getApiVersion">
+    <wsdl:part element="tns:getApiVersion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printCp71Response">
+    <wsdl:part element="tns:printCp71Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createReturnResponse">
+    <wsdl:part element="tns:createReturnResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printAllDocuments">
+    <wsdl:part element="tns:printAllDocuments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findParcelsByDate">
+    <wsdl:part element="tns:findParcelsByDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createManifestResponse">
+    <wsdl:part element="tns:createManifestResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findParcelByBarcode">
+    <wsdl:part element="tns:findParcelByBarcode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCity">
+    <wsdl:part element="tns:searchCity" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCODByIdResponse">
+    <wsdl:part element="tns:findCODByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printCn23Response">
+    <wsdl:part element="tns:printCn23Response" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCitiesListByPostCodeResponse">
+    <wsdl:part element="tns:searchCitiesListByPostCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findParcelByIdResponse">
+    <wsdl:part element="tns:findParcelByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCODResponse">
+    <wsdl:part element="tns:findCODResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findParcelsByDateResponse">
+    <wsdl:part element="tns:findParcelsByDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findParcelByBarcodeResponse">
+    <wsdl:part element="tns:findParcelByBarcodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findInvoiceById">
+    <wsdl:part element="tns:findInvoiceById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createManifest">
+    <wsdl:part element="tns:createManifest" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateParcelResponse">
+    <wsdl:part element="tns:validateParcelResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printCp71">
+    <wsdl:part element="tns:printCp71" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCityByPostCodeResponse">
+    <wsdl:part element="tns:searchCityByPostCodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findReturns">
+    <wsdl:part element="tns:findReturns" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="printAllDocumentsResponse">
+    <wsdl:part element="tns:printAllDocumentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteParcel">
+    <wsdl:part element="tns:deleteParcel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findInvoices">
+    <wsdl:part element="tns:findInvoices" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validateParcel">
+    <wsdl:part element="tns:validateParcel" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findReturnsResponse">
+    <wsdl:part element="tns:findReturnsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCODByInternalParcelNumber">
+    <wsdl:part element="tns:findCODByInternalParcelNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchDivisionsByLocalization">
+    <wsdl:part element="tns:searchDivisionsByLocalization" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchCityResponse">
+    <wsdl:part element="tns:searchCityResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MeestPolandFacade">
+    <wsdl:operation name="searchCity">
+      <wsdl:input message="tns:searchCity" name="searchCity">
+    </wsdl:input>
+      <wsdl:output message="tns:searchCityResponse" name="searchCityResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchStreetByNameAndCityIdRef">
+      <wsdl:input message="tns:searchStreetByNameAndCityIdRef" name="searchStreetByNameAndCityIdRef">
+    </wsdl:input>
+      <wsdl:output message="tns:searchStreetByNameAndCityIdRefResponse" name="searchStreetByNameAndCityIdRefResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="trackingParcel">
+      <wsdl:input message="tns:trackingParcel" name="trackingParcel">
+    </wsdl:input>
+      <wsdl:output message="tns:trackingParcelResponse" name="trackingParcelResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchDivisions">
+      <wsdl:input message="tns:searchDivisions" name="searchDivisions">
+    </wsdl:input>
+      <wsdl:output message="tns:searchDivisionsResponse" name="searchDivisionsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printCn23">
+      <wsdl:input message="tns:printCn23" name="printCn23">
+    </wsdl:input>
+      <wsdl:output message="tns:printCn23Response" name="printCn23Response">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printTfp3">
+      <wsdl:input message="tns:printTfp3" name="printTfp3">
+    </wsdl:input>
+      <wsdl:output message="tns:printTfp3Response" name="printTfp3Response">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findReturnById">
+      <wsdl:input message="tns:findReturnById" name="findReturnById">
+    </wsdl:input>
+      <wsdl:output message="tns:findReturnByIdResponse" name="findReturnByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createParcel">
+      <wsdl:input message="tns:createParcel" name="createParcel">
+    </wsdl:input>
+      <wsdl:output message="tns:createParcelResponse" name="createParcelResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCODById">
+      <wsdl:input message="tns:findCODById" name="findCODById">
+    </wsdl:input>
+      <wsdl:output message="tns:findCODByIdResponse" name="findCODByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findParcelById">
+      <wsdl:input message="tns:findParcelById" name="findParcelById">
+    </wsdl:input>
+      <wsdl:output message="tns:findParcelByIdResponse" name="findParcelByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findInvoiceById">
+      <wsdl:input message="tns:findInvoiceById" name="findInvoiceById">
+    </wsdl:input>
+      <wsdl:output message="tns:findInvoiceByIdResponse" name="findInvoiceByIdResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createManifest">
+      <wsdl:input message="tns:createManifest" name="createManifest">
+    </wsdl:input>
+      <wsdl:output message="tns:createManifestResponse" name="createManifestResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createReturn">
+      <wsdl:input message="tns:createReturn" name="createReturn">
+    </wsdl:input>
+      <wsdl:output message="tns:createReturnResponse" name="createReturnResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findReturnByReturnsNumber">
+      <wsdl:input message="tns:findReturnByReturnsNumber" name="findReturnByReturnsNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:findReturnByReturnsNumberResponse" name="findReturnByReturnsNumberResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printCp71">
+      <wsdl:input message="tns:printCp71" name="printCp71">
+    </wsdl:input>
+      <wsdl:output message="tns:printCp71Response" name="printCp71Response">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchCityByPostCode">
+      <wsdl:input message="tns:searchCityByPostCode" name="searchCityByPostCode">
+    </wsdl:input>
+      <wsdl:output message="tns:searchCityByPostCodeResponse" name="searchCityByPostCodeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchCitiesListByPostCode">
+      <wsdl:input message="tns:searchCitiesListByPostCode" name="searchCitiesListByPostCode">
+    </wsdl:input>
+      <wsdl:output message="tns:searchCitiesListByPostCodeResponse" name="searchCitiesListByPostCodeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findReturns">
+      <wsdl:input message="tns:findReturns" name="findReturns">
+    </wsdl:input>
+      <wsdl:output message="tns:findReturnsResponse" name="findReturnsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteParcel">
+      <wsdl:input message="tns:deleteParcel" name="deleteParcel">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteParcelResponse" name="deleteParcelResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCOD">
+      <wsdl:input message="tns:findCOD" name="findCOD">
+    </wsdl:input>
+      <wsdl:output message="tns:findCODResponse" name="findCODResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getApiVersion">
+      <wsdl:input message="tns:getApiVersion" name="getApiVersion">
+    </wsdl:input>
+      <wsdl:output message="tns:getApiVersionResponse" name="getApiVersionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findInvoices">
+      <wsdl:input message="tns:findInvoices" name="findInvoices">
+    </wsdl:input>
+      <wsdl:output message="tns:findInvoicesResponse" name="findInvoicesResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateParcel">
+      <wsdl:input message="tns:validateParcel" name="validateParcel">
+    </wsdl:input>
+      <wsdl:output message="tns:validateParcelResponse" name="validateParcelResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCODByInternalParcelNumber">
+      <wsdl:input message="tns:findCODByInternalParcelNumber" name="findCODByInternalParcelNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:findCODByInternalParcelNumberResponse" name="findCODByInternalParcelNumberResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printAllDocuments">
+      <wsdl:input message="tns:printAllDocuments" name="printAllDocuments">
+    </wsdl:input>
+      <wsdl:output message="tns:printAllDocumentsResponse" name="printAllDocumentsResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchDivisionsByLocalization">
+      <wsdl:input message="tns:searchDivisionsByLocalization" name="searchDivisionsByLocalization">
+    </wsdl:input>
+      <wsdl:output message="tns:searchDivisionsByLocalizationResponse" name="searchDivisionsByLocalizationResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findParcelsByDate">
+      <wsdl:input message="tns:findParcelsByDate" name="findParcelsByDate">
+    </wsdl:input>
+      <wsdl:output message="tns:findParcelsByDateResponse" name="findParcelsByDateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findParcelByBarcode">
+      <wsdl:input message="tns:findParcelByBarcode" name="findParcelByBarcode">
+    </wsdl:input>
+      <wsdl:output message="tns:findParcelByBarcodeResponse" name="findParcelByBarcodeResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:MeestException" name="MeestException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="services/MeestPolandSoapBinding" type="tns:MeestPolandFacade">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="searchCity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchCity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchCityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchStreetByNameAndCityIdRef">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchStreetByNameAndCityIdRef">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchStreetByNameAndCityIdRefResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="trackingParcel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="trackingParcel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="trackingParcelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchDivisions">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchDivisions">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchDivisionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printCn23">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="printCn23">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="printCn23Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printTfp3">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="printTfp3">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="printTfp3Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findReturnById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findReturnById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findReturnByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createParcel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createParcel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createParcelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCODById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCODById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCODByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findParcelById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findParcelById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findParcelByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findInvoiceById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findInvoiceById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findInvoiceByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createManifest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createManifest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createManifestResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createReturn">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createReturn">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createReturnResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findReturnByReturnsNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findReturnByReturnsNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findReturnByReturnsNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printCp71">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="printCp71">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="printCp71Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchCityByPostCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchCityByPostCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchCityByPostCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchCitiesListByPostCode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchCitiesListByPostCode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchCitiesListByPostCodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findReturns">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findReturns">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findReturnsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteParcel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteParcel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteParcelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCOD">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCOD">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCODResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getApiVersion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getApiVersion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getApiVersionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findInvoices">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findInvoices">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findInvoicesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateParcel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="validateParcel">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="validateParcelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findCODByInternalParcelNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCODByInternalParcelNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCODByInternalParcelNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="printAllDocuments">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="printAllDocuments">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="printAllDocumentsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchDivisionsByLocalization">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="searchDivisionsByLocalization">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchDivisionsByLocalizationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findParcelsByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findParcelsByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findParcelsByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findParcelByBarcode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findParcelByBarcode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findParcelByBarcodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeestException">
+        <soap:fault name="MeestException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="services/MeestPoland">
+    <wsdl:port binding="tns:services/MeestPolandSoapBinding" name="MeestPolandFacadePort">
+      <soap:address location="http://localhost:80/administration/services/MeestPoland"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
