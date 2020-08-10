@@ -11,7 +11,7 @@ use Answear\MeestBundle\Request\RequestInterface;
 use Answear\MeestBundle\Response;
 use Answear\MeestBundle\Response\ResponseInterface;
 
-class MeestClient extends \SoapClient
+class MeestClient
 {
     private const WSDL_URL = 'http://meestb2b.com/administration/services/MeestPoland?wsdl';
 
@@ -21,17 +21,20 @@ class MeestClient extends \SoapClient
         ResponseEnum::DIVISION_DTO => Response\DTO\DivisionDTO::class,
     ];
 
+    /** @var \SoapClient */
+    private $client;
+
     public function __construct(ConfigProvider $configProvider)
     {
         $soapOptions['classmap'] = self::CLASSMAP;
         $soapOptions['location'] = $configProvider->getApiUrl();
         $soapOptions['exceptions'] = true;
 
-        parent::__construct(self::WSDL_URL, $soapOptions);
+        $this->client = new \SoapClient(self::WSDL_URL, $soapOptions);
     }
 
     public function request(RequestInterface $request): ResponseInterface
     {
-        return $this->__soapCall($request->getMethod()->getValue(), [$request->toArray()]);
+        return $this->client->__soapCall($request->getMethod()->getValue(), [$request->toArray()]);
     }
 }
