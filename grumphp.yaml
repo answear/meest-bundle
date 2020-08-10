@@ -1,6 +1,4 @@
-parameters:
-    git_dir: .
-    bin_dir: "./vendor/bin"
+grumphp:
     process_timeout: 120
     ascii:
         failed: ~
@@ -17,7 +15,7 @@ parameters:
             triggered_by: ["php"]
         git_commit_message:
             max_subject_width: 120
-        phpcsfixer2:
+        phpcsfixer:
             allow_risky: true
             cache_file: ~
             config: './.php_cs'
