@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Answear\MeestBundle\Response;
 
-class GetApiVersionResponse implements ResponseInterface
+class GetApiVersion implements ResponseInterface
 {
     /**
-     * @var string $return
+     * @var string
      */
     public $return;
 

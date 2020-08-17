@@ -5,9 +5,19 @@ declare(strict_types=1);
 namespace Answear\MeestBundle\Tests\Functional\Service;
 
 use Answear\MeestBundle\Enum\DivisionTypeEnum;
+use Answear\MeestBundle\Enum\RequestEnum;
+use Answear\MeestBundle\Request\SearchCity;
+use Answear\MeestBundle\Request\SearchCityByPostCode;
 use Answear\MeestBundle\Request\SearchDivisions;
+use Answear\MeestBundle\Request\SearchStreetByNameAndCityIdRef;
+use Answear\MeestBundle\Response\DTO\CityDTO;
 use Answear\MeestBundle\Response\DTO\DivisionDTO;
+use Answear\MeestBundle\Response\DTO\StreetDTO;
+use Answear\MeestBundle\Response\ResponseInterface;
+use Answear\MeestBundle\Response\SearchCity as SearchCityResponse;
+use Answear\MeestBundle\Response\SearchCityByPostCode as SearchCityByPostCodeResponse;
 use Answear\MeestBundle\Response\SearchDivisions as SearchDivisionsResponse;
+use Answear\MeestBundle\Response\SearchStreetByNameAndCityIdRef as SearchStreetByNameAndCityIdRefResponse;
 use Answear\MeestBundle\Service\MeestClient;
 use PHPUnit\Framework\TestCase;
 
@@ -19,20 +29,76 @@ class MeestClientTest extends TestCase
     public function fetchesDivisions(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('request')
-            ->willReturn($this->getResponse());
+        $meestClientMock->method('request')->with(new SearchDivisions(DivisionTypeEnum::collectionPoint()))
+            ->willReturn($this->getResponse(RequestEnum::SEARCH_DIVISIONS));
 
         $actualResponse = $meestClientMock->request(new SearchDivisions(DivisionTypeEnum::collectionPoint()));
 
         $this->assertEquals(
-            $this->getExpectedResponse(),
+            $this->getExpectedSearchDivisionsResponse(),
             $actualResponse
         );
     }
 
-    private function getResponse(): SearchDivisionsResponse
+    /**
+     * @test
+     */
+    public function searchesCity(): void
     {
-        $responseXml = file_get_contents(__DIR__ . '/../../DataFixtures/XML/SearchDivisionsResponse.xml');
+        $meestClientMock = $this->createMock(MeestClient::class);
+        $meestClientMock->method('request')->with(new SearchCity('Одеса'))
+            ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY));
+
+        $actualResponse = $meestClientMock->request(new SearchCity('Одеса'));
+
+        $this->assertEquals(
+            $this->getExpectedSearchCityResponse(),
+            $actualResponse
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function searchesCityByPostCode(): void
+    {
+        $meestClientMock = $this->createMock(MeestClient::class);
+        $meestClientMock->method('request')->with(new SearchCityByPostCode('46001'))
+            ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY_BY_POST_CODE));
+
+        $actualResponse = $meestClientMock->request(new SearchCityByPostCode('46001'));
+
+        $this->assertEquals(
+            $this->getExpectedSearchCityByPostCodeResponse(),
+            $actualResponse
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function searchesStreetByNameAndCityIdRef(): void
+    {
+        $meestClientMock = $this->createMock(MeestClient::class);
+        $meestClientMock->method('request')
+            ->with(new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зелена'))
+            ->willReturn($this->getResponse(RequestEnum::SEARCH_STREET_BY_NAME_AND_CITY_ID_REF));
+
+        $actualResponse = $meestClientMock->request(
+            new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зелена')
+        );
+
+        $this->assertEquals(
+            $this->getExpectedSearchStreetByNameAndCityIdRefResponse(),
+            $actualResponse
+        );
+    }
+
+    private function getResponse(string $functionName): ResponseInterface
+    {
+        $responseXml = file_get_contents(
+            __DIR__ . '/../../DataFixtures/XML/' . ucfirst($functionName) . 'Response.xml'
+        );
         $wsdl = __DIR__ . '/../../DataFixtures/XML/MeestPoland.wsdl';
 
         $soapClientMock = $this->getMockBuilder(\SoapClient::class)
@@ -43,10 +109,10 @@ class MeestClientTest extends TestCase
         $soapClientMock->expects($this->once())
             ->method('__doRequest')->will($this->returnValue($responseXml));
 
-        return $soapClientMock->__call('searchDivisions', []);
+        return $soapClientMock->__call($functionName, []);
     }
 
-    private function getExpectedResponse(): SearchDivisionsResponse
+    private function getExpectedSearchDivisionsResponse(): SearchDivisionsResponse
     {
         $response = new SearchDivisionsResponse();
 
@@ -148,6 +214,66 @@ class MeestClientTest extends TestCase
         $division3->workingHoursUa = 'Пн 09:00 - 17:00; Вт 09:00 - 17:00; Ср 09:00 - 17:00; Чт 09:00 - 17:00; Пт 09:00 - 17:00; Сб --:-- - --:--; Нд --:-- - --:--';
 
         $response->return[] = $division3;
+
+        return $response;
+    }
+
+    private function getExpectedSearchCityResponse(): SearchCityResponse
+    {
+        $response = new SearchCityResponse();
+
+        $city = new CityDTO();
+        $city->cityIdRef = '0xb11200215aee3ebe11df749b6ed81d37';
+        $city->descriptionUA = 'Одеса';
+        $city->descriptionRU = 'Одесса';
+        $city->descriptionEN = 'Odesa';
+        $city->regionDescriptionUA = 'ОДЕСЬКА';
+        $city->regionDescriptionRU = 'ОДЕССКАЯ';
+        $city->regionDescriptionEN = 'ODES`KA';
+        $city->districtDescriptionUA = 'Одеса';
+        $city->districtDescriptionRU = 'Одесса';
+        $city->districtDescriptionEN = 'Odesa';
+
+        $response->return = $city;
+
+        return $response;
+    }
+
+    private function getExpectedSearchCityByPostCodeResponse(): SearchCityByPostCodeResponse
+    {
+        $response = new SearchCityByPostCodeResponse();
+
+        $city = new CityDTO();
+        $city->cityIdRef = '0xb11200215aee3ebe11df749b50c590ab';
+        $city->descriptionUA = 'Грабовець';
+        $city->descriptionRU = 'Грабовец';
+        $city->descriptionEN = 'Grabovets';
+        $city->regionDescriptionUA = 'ТЕРНОПІЛЬСЬКА';
+        $city->regionDescriptionRU = 'ТЕРНОПОЛЬСКАЯ';
+        $city->regionDescriptionEN = 'TERNOPIL`S`KA';
+        $city->districtDescriptionUA = 'Тернопільський';
+        $city->districtDescriptionRU = 'Грабовец';
+        $city->districtDescriptionEN = 'Grabovets';
+
+        $response->return = $city;
+
+        return $response;
+    }
+
+    private function getExpectedSearchStreetByNameAndCityIdRefResponse(): SearchStreetByNameAndCityIdRefResponse
+    {
+        $response = new SearchStreetByNameAndCityIdRefResponse();
+
+        $street = new StreetDTO();
+        $street->streetIdRef = '0x9b3700215aee3ebe11dfe0d3da9108ea';
+        $street->descriptionUA = 'Зелена';
+        $street->descriptionRU = 'Зеленая';
+        $street->descriptionEN = 'Zelena';
+        $street->streetTypeUA = 'вул.';
+        $street->streetTypeRU = 'ул.';
+        $street->cityIdRef = '0xb11200215aee3ebe11df749b62c3d54a';
+
+        $response->return = $street;
 
         return $response;
     }

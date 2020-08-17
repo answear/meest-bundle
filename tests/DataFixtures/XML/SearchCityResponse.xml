@@ -1,0 +1,18 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:searchCityResponse xmlns:ns2="http://logic.meestgroup.com/">
+            <return>
+                <cityIdRef>0xb11200215aee3ebe11df749b6ed81d37</cityIdRef>
+                <descriptionEN>Odesa</descriptionEN>
+                <descriptionRU>Одесса</descriptionRU>
+                <descriptionUA>Одеса</descriptionUA>
+                <districtDescriptionEN>Odesa</districtDescriptionEN>
+                <districtDescriptionRU>Одесса</districtDescriptionRU>
+                <districtDescriptionUA>Одеса</districtDescriptionUA>
+                <regionDescriptionEN>ODES`KA</regionDescriptionEN>
+                <regionDescriptionRU>ОДЕССКАЯ</regionDescriptionRU>
+                <regionDescriptionUA>ОДЕСЬКА</regionDescriptionUA>
+            </return>
+        </ns2:searchCityResponse>
+    </soap:Body>
+</soap:Envelope>
