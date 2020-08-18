@@ -9,7 +9,7 @@ use Answear\MeestBundle\Response\DTO\CityDTO;
 class SearchCity implements ResponseInterface
 {
     /**
-     * @var CityDTO|CityDTO[]
+     * @var CityDTO[]
      */
     public $return;
 }

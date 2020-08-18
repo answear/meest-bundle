@@ -9,7 +9,7 @@ use Answear\MeestBundle\Response\DTO\StreetDTO;
 class SearchStreetByNameAndCityIdRef implements ResponseInterface
 {
     /**
-     * @var StreetDTO
+     * @var StreetDTO[]
      */
     public $return;
 }
