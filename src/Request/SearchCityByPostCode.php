@@ -17,6 +17,7 @@ class SearchCityByPostCode implements RequestInterface
     public function __construct(string $postCode)
     {
         Assert::length($postCode, 5);
+        Assert::digits($postCode);
         $this->postCode = $postCode;
     }
 
