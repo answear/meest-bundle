@@ -18,7 +18,7 @@ class SearchCity implements RequestInterface
         $this->cityName = $cityName;
     }
 
-    public function getFunction(): RequestEnum
+    public function getEndpoint(): RequestEnum
     {
         return RequestEnum::searchCity();
     }

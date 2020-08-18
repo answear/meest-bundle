@@ -45,6 +45,6 @@ class MeestClient
 
     public function request(RequestInterface $request): ResponseInterface
     {
-        return $this->client->__soapCall($request->getFunction()->getValue(), [$request->toArray()]);
+        return $this->client->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
     }
 }

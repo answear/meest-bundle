@@ -24,7 +24,7 @@ class SearchStreetByNameAndCityIdRef implements RequestInterface
         $this->streetName = $streetName;
     }
 
-    public function getFunction(): RequestEnum
+    public function getEndpoint(): RequestEnum
     {
         return RequestEnum::searchStreetByNameAndCityIdRef();
     }

@@ -20,7 +20,7 @@ class SearchCityByPostCode implements RequestInterface
         $this->postCode = $postCode;
     }
 
-    public function getFunction(): RequestEnum
+    public function getEndpoint(): RequestEnum
     {
         return RequestEnum::searchCityByPostCode();
     }

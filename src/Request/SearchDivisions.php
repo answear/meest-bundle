@@ -25,7 +25,7 @@ class SearchDivisions implements RequestInterface
         $this->cityId = $cityId;
     }
 
-    public function getFunction(): RequestEnum
+    public function getEndpoint(): RequestEnum
     {
         return RequestEnum::searchDivisions();
     }

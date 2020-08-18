@@ -12,7 +12,7 @@ class GetApiVersion implements RequestInterface
     {
     }
 
-    public function getFunction(): RequestEnum
+    public function getEndpoint(): RequestEnum
     {
         return RequestEnum::getApiVersion();
     }
