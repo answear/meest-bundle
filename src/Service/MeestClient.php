@@ -39,6 +39,7 @@ class MeestClient
         $soapOptions['classmap'] = self::CLASSMAP;
         $soapOptions['location'] = $configProvider->getApiUrl();
         $soapOptions['exceptions'] = true;
+        $soapOptions['features'] = SOAP_SINGLE_ELEMENT_ARRAYS;
 
         $this->client = new \SoapClient(self::WSDL_URL, $soapOptions);
     }
