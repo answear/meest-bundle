@@ -6,6 +6,7 @@ namespace Answear\MeestBundle\Service;
 
 use Answear\MeestBundle\Enum\RequestEnum;
 use Answear\MeestBundle\Enum\ResponseEnum;
+use Answear\MeestBundle\Exception\MeestException;
 use Answear\MeestBundle\Request;
 use Answear\MeestBundle\Request\RequestInterface;
 use Answear\MeestBundle\Response;
@@ -46,6 +47,10 @@ class MeestClient
 
     public function request(RequestInterface $request): ResponseInterface
     {
-        return $this->client->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
+        try {
+            return $this->client->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
+        } catch (\SoapFault $soapFault) {
+            throw new MeestException($soapFault);
+        }
     }
 }
