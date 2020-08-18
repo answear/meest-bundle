@@ -46,10 +46,10 @@ class MeestClientTest extends TestCase
     public function searchesCity(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('request')->with(new SearchCity('Одеса'))
+        $meestClientMock->method('request')->with(new SearchCity('Одера'))
             ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY));
 
-        $actualResponse = $meestClientMock->request(new SearchCity('Одеса'));
+        $actualResponse = $meestClientMock->request(new SearchCity('Одера'));
 
         $this->assertEquals(
             $this->getExpectedSearchCityResponse(),
@@ -81,11 +81,11 @@ class MeestClientTest extends TestCase
     {
         $meestClientMock = $this->createMock(MeestClient::class);
         $meestClientMock->method('request')
-            ->with(new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зелена'))
+            ->with(new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зел'))
             ->willReturn($this->getResponse(RequestEnum::SEARCH_STREET_BY_NAME_AND_CITY_ID_REF));
 
         $actualResponse = $meestClientMock->request(
-            new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зелена')
+            new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зел')
         );
 
         $this->assertEquals(
@@ -223,18 +223,46 @@ class MeestClientTest extends TestCase
         $response = new SearchCityResponse();
 
         $city = new CityDTO();
-        $city->cityIdRef = '0xb11200215aee3ebe11df749b6ed81d37';
-        $city->descriptionUA = 'Одеса';
-        $city->descriptionRU = 'Одесса';
-        $city->descriptionEN = 'Odesa';
-        $city->regionDescriptionUA = 'ОДЕСЬКА';
-        $city->regionDescriptionRU = 'ОДЕССКАЯ';
-        $city->regionDescriptionEN = 'ODES`KA';
-        $city->districtDescriptionUA = 'Одеса';
-        $city->districtDescriptionRU = 'Одесса';
-        $city->districtDescriptionEN = 'Odesa';
+        $city->cityIdRef = '0xb11200215aee3ebe11df749b6ed81d34';
+        $city->descriptionUA = 'Одеради';
+        $city->descriptionRU = 'Одерады';
+        $city->descriptionEN = 'Oderady';
+        $city->regionDescriptionUA = 'ВОЛИНСЬКА';
+        $city->regionDescriptionRU = 'ВОЛЫНСКАЯ';
+        $city->regionDescriptionEN = 'VOLYNS`KA';
+        $city->districtDescriptionUA = 'Ківерцівський';
+        $city->districtDescriptionRU = 'Одерады';
+        $city->districtDescriptionEN = 'Oderady';
 
-        $response->return = $city;
+        $response->return[] = $city;
+
+        $city = new CityDTO();
+        $city->cityIdRef = '0xb11200215aee3ebe11df749b6ed81d35';
+        $city->descriptionUA = 'Одеради';
+        $city->descriptionRU = 'Одерады';
+        $city->descriptionEN = 'Oderady';
+        $city->regionDescriptionUA = 'ВОЛИНСЬКА';
+        $city->regionDescriptionRU = 'ВОЛЫНСКАЯ';
+        $city->regionDescriptionEN = 'VOLYNS`KA';
+        $city->districtDescriptionUA = 'Луцький';
+        $city->districtDescriptionRU = 'Одерады';
+        $city->districtDescriptionEN = 'Oderady';
+
+        $response->return[] = $city;
+
+        $city = new CityDTO();
+        $city->cityIdRef = '0xb11200215aee3ebe11df749b6ed81d36';
+        $city->descriptionUA = 'Одерадівка';
+        $city->descriptionRU = 'Одерадовка';
+        $city->descriptionEN = 'Oderadivka';
+        $city->regionDescriptionUA = 'ТЕРНОПІЛЬСЬКА';
+        $city->regionDescriptionRU = 'ТЕРНОПОЛЬСКАЯ';
+        $city->regionDescriptionEN = 'TERNOPIL`S`KA';
+        $city->districtDescriptionUA = 'Шумський';
+        $city->districtDescriptionRU = 'Одерадовка';
+        $city->districtDescriptionEN = 'Oderadivka';
+
+        $response->return[] = $city;
 
         return $response;
     }
@@ -273,7 +301,18 @@ class MeestClientTest extends TestCase
         $street->streetTypeRU = 'ул.';
         $street->cityIdRef = '0xb11200215aee3ebe11df749b62c3d54a';
 
-        $response->return = $street;
+        $response->return[] = $street;
+
+        $street2 = new StreetDTO();
+        $street2->streetIdRef = '0x9b3700215aee3ebe11dfe0d3da9104ef';
+        $street2->descriptionUA = 'Козельницька';
+        $street2->descriptionRU = 'Козельницкая';
+        $street2->descriptionEN = 'Kozelnytska';
+        $street2->streetTypeUA = 'вул.';
+        $street2->streetTypeRU = 'ул.';
+        $street2->cityIdRef = '0xb11200215aee3ebe11df749b62c3d54a';
+
+        $response->return[] = $street2;
 
         return $response;
     }
