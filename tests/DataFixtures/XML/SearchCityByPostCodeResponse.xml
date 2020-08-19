@@ -1,0 +1,18 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:searchCityByPostCodeResponse xmlns:ns2="http://logic.meestgroup.com/">
+            <return>
+                <cityIdRef>0xb11200215aee3ebe11df749b50c590ab</cityIdRef>
+                <descriptionEN>Grabovets</descriptionEN>
+                <descriptionRU>Грабовец</descriptionRU>
+                <descriptionUA>Грабовець</descriptionUA>
+                <districtDescriptionEN>Grabovets</districtDescriptionEN>
+                <districtDescriptionRU>Грабовец</districtDescriptionRU>
+                <districtDescriptionUA>Тернопільський</districtDescriptionUA>
+                <regionDescriptionEN>TERNOPIL`S`KA</regionDescriptionEN>
+                <regionDescriptionRU>ТЕРНОПОЛЬСКАЯ</regionDescriptionRU>
+                <regionDescriptionUA>ТЕРНОПІЛЬСЬКА</regionDescriptionUA>
+            </return>
+        </ns2:searchCityByPostCodeResponse>
+    </soap:Body>
+</soap:Envelope>

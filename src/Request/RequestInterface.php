@@ -8,7 +8,7 @@ use Answear\MeestBundle\Enum\RequestEnum;
 
 interface RequestInterface
 {
-    public function getMethod(): RequestEnum;
+    public function getEndpoint(): RequestEnum;
 
     public function toArray(): array;
 }

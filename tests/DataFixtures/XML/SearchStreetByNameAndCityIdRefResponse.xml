@@ -1,0 +1,24 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:searchStreetByNameAndCityIdRefResponse xmlns:ns2="http://logic.meestgroup.com/">
+            <return>
+                <cityIdRef>0xb11200215aee3ebe11df749b62c3d54a</cityIdRef>
+                <descriptionEN>Zelena</descriptionEN>
+                <descriptionRU>Зеленая</descriptionRU>
+                <descriptionUA>Зелена</descriptionUA>
+                <streetIdRef>0x9b3700215aee3ebe11dfe0d3da9108ea</streetIdRef>
+                <streetTypeRU>ул.</streetTypeRU>
+                <streetTypeUA>вул.</streetTypeUA>
+            </return>
+            <return>
+                <cityIdRef>0xb11200215aee3ebe11df749b62c3d54a</cityIdRef>
+                <descriptionEN>Kozelnytska</descriptionEN>
+                <descriptionRU>Козельницкая</descriptionRU>
+                <descriptionUA>Козельницька</descriptionUA>
+                <streetIdRef>0x9b3700215aee3ebe11dfe0d3da9104ef</streetIdRef>
+                <streetTypeRU>ул.</streetTypeRU>
+                <streetTypeUA>вул.</streetTypeUA>
+            </return>
+        </ns2:searchStreetByNameAndCityIdRefResponse>
+    </soap:Body>
+</soap:Envelope>
