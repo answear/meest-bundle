@@ -29,10 +29,10 @@ class MeestClientTest extends TestCase
     public function fetchesDivisions(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('request')->with(new SearchDivisions(DivisionTypeEnum::collectionPoint()))
+        $meestClientMock->method('searchDivisions')->with(new SearchDivisions(DivisionTypeEnum::collectionPoint()))
             ->willReturn($this->getResponse(RequestEnum::SEARCH_DIVISIONS));
 
-        $actualResponse = $meestClientMock->request(new SearchDivisions(DivisionTypeEnum::collectionPoint()));
+        $actualResponse = $meestClientMock->searchDivisions(new SearchDivisions(DivisionTypeEnum::collectionPoint()));
 
         $this->assertEquals(
             $this->getExpectedSearchDivisionsResponse(),
@@ -46,10 +46,10 @@ class MeestClientTest extends TestCase
     public function searchesCity(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('request')->with(new SearchCity('Одера'))
+        $meestClientMock->method('searchCity')->with(new SearchCity('Одера'))
             ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY));
 
-        $actualResponse = $meestClientMock->request(new SearchCity('Одера'));
+        $actualResponse = $meestClientMock->searchCity(new SearchCity('Одера'));
 
         $this->assertEquals(
             $this->getExpectedSearchCityResponse(),
@@ -63,10 +63,10 @@ class MeestClientTest extends TestCase
     public function searchesCityByPostCode(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('request')->with(new SearchCityByPostCode('46001'))
+        $meestClientMock->method('searchCityByPostCode')->with(new SearchCityByPostCode('46001'))
             ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY_BY_POST_CODE));
 
-        $actualResponse = $meestClientMock->request(new SearchCityByPostCode('46001'));
+        $actualResponse = $meestClientMock->searchCityByPostCode(new SearchCityByPostCode('46001'));
 
         $this->assertEquals(
             $this->getExpectedSearchCityByPostCodeResponse(),
@@ -80,11 +80,11 @@ class MeestClientTest extends TestCase
     public function searchesStreetByNameAndCityIdRef(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('request')
+        $meestClientMock->method('searchStreetByNameAndCityIdRef')
             ->with(new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зел'))
             ->willReturn($this->getResponse(RequestEnum::SEARCH_STREET_BY_NAME_AND_CITY_ID_REF));
 
-        $actualResponse = $meestClientMock->request(
+        $actualResponse = $meestClientMock->searchStreetByNameAndCityIdRef(
             new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зел')
         );
 

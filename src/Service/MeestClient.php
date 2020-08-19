@@ -10,7 +10,6 @@ use Answear\MeestBundle\Exception\MeestException;
 use Answear\MeestBundle\Request;
 use Answear\MeestBundle\Request\RequestInterface;
 use Answear\MeestBundle\Response;
-use Answear\MeestBundle\Response\ResponseInterface;
 
 class MeestClient
 {
@@ -45,7 +44,33 @@ class MeestClient
         $this->client = new \SoapClient(self::WSDL_URL, $soapOptions);
     }
 
-    public function request(RequestInterface $request): ResponseInterface
+    public function searchDivisions(Request\SearchDivisions $request): Response\SearchDivisions
+    {
+        return $this->request($request);
+    }
+
+    public function getApiVersion(Request\GetApiVersion $request): Response\GetApiVersion
+    {
+        return $this->request($request);
+    }
+
+    public function searchCityByPostCode(Request\SearchCityByPostCode $request): Response\SearchCityByPostCode
+    {
+        return $this->request($request);
+    }
+
+    public function searchStreetByNameAndCityIdRef(
+        Request\SearchStreetByNameAndCityIdRef $request
+    ): Response\SearchStreetByNameAndCityIdRef {
+        return $this->request($request);
+    }
+
+    public function searchCity(Request\SearchCity $request): Response\SearchCity
+    {
+        return $this->request($request);
+    }
+
+    private function request(RequestInterface $request)
     {
         try {
             return $this->client->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
