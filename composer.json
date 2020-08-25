@@ -6,7 +6,7 @@
   "require": {
     "php": ">=7.3",
     "ext-soap": "*",
-    "marc-mabe/php-enum": "^3.0",
+    "marc-mabe/php-enum": "^3.0|^4.0",
     "symfony/http-kernel": "^4.4"
   },
   "require-dev": {
