@@ -14,8 +14,8 @@
     "roave/security-advisories": "dev-master",
     "phpunit/phpunit": "^8.3",
     "symfony/phpunit-bridge": "^5.0",
-    "phpro/grumphp": "^0.20",
-    "friendsofphp/php-cs-fixer": "^2.16",
+    "phpro/grumphp": "^1.4.0",
+    "friendsofphp/php-cs-fixer": "^2.19",
     "phpstan/phpstan": "^0.12.32",
     "phpstan/phpstan-webmozart-assert": "^0.12.2"
   },
