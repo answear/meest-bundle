@@ -31,17 +31,18 @@ class MeestClient
         ResponseEnum::STREET_DTO => Response\DTO\StreetDTO::class,
     ];
 
-    /** @var \SoapClient */
+    /**
+     * @var \SoapClient|null
+     */
     private $client;
+    /**
+     * @var ConfigProvider
+     */
+    private $configProvider;
 
     public function __construct(ConfigProvider $configProvider)
     {
-        $soapOptions['classmap'] = self::CLASSMAP;
-        $soapOptions['location'] = $configProvider->getApiUrl();
-        $soapOptions['exceptions'] = true;
-        $soapOptions['features'] = SOAP_SINGLE_ELEMENT_ARRAYS;
-
-        $this->client = new \SoapClient(self::WSDL_URL, $soapOptions);
+        $this->configProvider = $configProvider;
     }
 
     public function searchDivisions(Request\SearchDivisions $request): Response\SearchDivisions
@@ -73,9 +74,27 @@ class MeestClient
     private function request(RequestInterface $request)
     {
         try {
-            return $this->client->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
+            return $this->getClient()->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
         } catch (\SoapFault $soapFault) {
             throw new MeestException($soapFault);
         }
+    }
+
+    private function getClient(): \SoapClient
+    {
+        if (null !== $this->client) {
+            return $this->client;
+        }
+
+        $soapOptions = [
+            'classmap' => self::CLASSMAP,
+            'location' => $this->configProvider->getApiUrl(),
+            'exceptions' => true,
+            'features' => SOAP_SINGLE_ELEMENT_ARRAYS,
+        ];
+
+        $this->client = new \SoapClient(self::WSDL_URL, $soapOptions);
+
+        return $this->client;
     }
 }
