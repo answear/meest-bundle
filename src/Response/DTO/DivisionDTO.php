@@ -6,148 +6,61 @@ namespace Answear\MeestBundle\Response\DTO;
 
 class DivisionDTO
 {
-    /**
-     * @var string
-     */
-    public $divisionIDRRef;
+    public string $divisionIDRRef;
 
-    /**
-     * @var bool
-     */
-    public $active;
+    public bool $active;
 
-    /**
-     * @var string
-     */
-    public $descriptionUA;
+    public string $descriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $descriptionRU;
+    public ?string $descriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $regionDescriptionUA;
+    public ?string $regionDescriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $regionDescriptionRU;
+    public ?string $regionDescriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $regionDescriptionEN;
+    public ?string $regionDescriptionEN;
 
-    /**
-     * @var string|null
-     */
-    public $districtDescriptionUA;
+    public ?string $districtDescriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $districtDescriptionRU;
+    public ?string $districtDescriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $districtDescriptionEN;
+    public ?string $districtDescriptionEN;
 
-    /**
-     * @var string
-     */
-    public $cityDescriptionUA;
+    public string $cityDescriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $cityDescriptionRU;
+    public ?string $cityDescriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $cityDescriptionEN;
+    public ?string $cityDescriptionEN;
 
-    /**
-     * @var string|null
-     */
-    public $streetTypeUA;
+    public ?string $streetTypeUA;
 
-    /**
-     * @var string|null
-     */
-    public $streetDescriptionUA;
+    public ?string $streetDescriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $streetTypeRU;
+    public ?string $streetTypeRU;
 
-    /**
-     * @var string|null
-     */
-    public $streetDescriptionRU;
+    public ?string $streetDescriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $streetDescriptionEN;
+    public ?string $streetDescriptionEN;
 
-    /**
-     * @var string|null
-     */
-    public $house;
+    public ?string $house;
 
-    /**
-     * @var string|null
-     */
-    public $flat;
+    public ?string $flat;
 
-    /**
-     * @var string
-     */
-    public $limitweight;
+    public string $limitweight;
 
-    /**
-     * @var string
-     */
-    public $divisionType;
+    public string $divisionType;
 
-    /**
-     * @var string
-     */
-    public $latitude;
+    public string $latitude;
 
-    /**
-     * @var string
-     */
-    public $longitude;
+    public string $longitude;
 
-    /**
-     * @var string|null
-     */
-    public $divisionCode;
+    public ?string $divisionCode;
 
-    /**
-     * @var bool
-     */
-    public $payTypeCard;
+    public bool $payTypeCard;
 
-    /**
-     * @var bool
-     */
-    public $payTypeCash;
+    public bool $payTypeCash;
 
-    /**
-     * @var bool
-     */
-    public $terminalCash;
+    public bool $terminalCash;
 
-    /**
-     * @var string
-     */
-    public $workingHoursUa;
+    public string $workingHoursUa;
 }

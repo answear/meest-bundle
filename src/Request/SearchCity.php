@@ -6,21 +6,15 @@ namespace Answear\MeestBundle\Request;
 
 use Answear\MeestBundle\Enum\RequestEnum;
 
-class SearchCity implements RequestInterface
+readonly class SearchCity implements RequestInterface
 {
-    /**
-     * @var string
-     */
-    private $cityName;
-
-    public function __construct(string $cityName)
+    public function __construct(private string $cityName)
     {
-        $this->cityName = $cityName;
     }
 
     public function getEndpoint(): RequestEnum
     {
-        return RequestEnum::searchCity();
+        return RequestEnum::SearchCity;
     }
 
     public function toArray(): array

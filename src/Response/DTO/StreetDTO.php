@@ -6,38 +6,17 @@ namespace Answear\MeestBundle\Response\DTO;
 
 class StreetDTO
 {
-    /**
-     * @var string
-     */
-    public $streetIdRef;
+    public string $streetIdRef;
 
-    /**
-     * @var string
-     */
-    public $descriptionUA;
+    public string $descriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $descriptionRU;
+    public ?string $descriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $descriptionEN;
+    public ?string $descriptionEN;
 
-    /**
-     * @var string
-     */
-    public $streetTypeUA;
+    public string $streetTypeUA;
 
-    /**
-     * @var string|null
-     */
-    public $streetTypeRU;
+    public ?string $streetTypeRU;
 
-    /**
-     * @var string
-     */
-    public $cityIdRef;
+    public string $cityIdRef;
 }

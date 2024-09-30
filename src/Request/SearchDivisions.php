@@ -7,34 +7,24 @@ namespace Answear\MeestBundle\Request;
 use Answear\MeestBundle\Enum\DivisionTypeEnum;
 use Answear\MeestBundle\Enum\RequestEnum;
 
-class SearchDivisions implements RequestInterface
+readonly class SearchDivisions implements RequestInterface
 {
-    /**
-     * @var DivisionTypeEnum|null
-     */
-    private $divisionType;
-
-    /**
-     * @var string|null
-     */
-    private $cityId;
-
-    public function __construct(?DivisionTypeEnum $divisionType = null, ?string $cityId = null)
-    {
-        $this->divisionType = $divisionType;
-        $this->cityId = $cityId;
+    public function __construct(
+        private ?DivisionTypeEnum $divisionType = null,
+        private ?string $cityId = null,
+    ) {
     }
 
     public function getEndpoint(): RequestEnum
     {
-        return RequestEnum::searchDivisions();
+        return RequestEnum::SearchDivisions;
     }
 
     public function toArray(): array
     {
         return [
             'arg0' => $this->cityId,
-            'arg1' => $this->divisionType ? $this->divisionType->getValue() : null,
+            'arg1' => $this->divisionType?->value,
         ];
     }
 }

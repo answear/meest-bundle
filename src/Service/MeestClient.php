@@ -16,11 +16,11 @@ class MeestClient
     private const WSDL_URL = 'http://meestb2b.com/administration/services/MeestPoland?wsdl';
 
     public const CLASSMAP = [
-        RequestEnum::SEARCH_DIVISIONS => Request\SearchDivisions::class,
-        RequestEnum::GET_API_VERSION => Request\GetApiVersion::class,
-        RequestEnum::SEARCH_CITY_BY_POST_CODE => Request\SearchCityByPostCode::class,
-        RequestEnum::SEARCH_CITY => Request\SearchCity::class,
-        RequestEnum::SEARCH_STREET_BY_NAME_AND_CITY_ID_REF => Request\SearchStreetByNameAndCityIdRef::class,
+        RequestEnum::SearchDivisions->value => Request\SearchDivisions::class,
+        RequestEnum::GetApiVersion->value => Request\GetApiVersion::class,
+        RequestEnum::SearchCityByPostCode->value => Request\SearchCityByPostCode::class,
+        RequestEnum::SearchCity->value => Request\SearchCity::class,
+        RequestEnum::SearchStreetByNameAndCityIdRef->value => Request\SearchStreetByNameAndCityIdRef::class,
         ResponseEnum::SEARCH_DIVISIONS => Response\SearchDivisions::class,
         ResponseEnum::GET_API_VERSION => Response\GetApiVersion::class,
         ResponseEnum::SEARCH_CITY_BY_POST_CODE => Response\SearchCityByPostCode::class,
@@ -31,18 +31,11 @@ class MeestClient
         ResponseEnum::STREET_DTO => Response\DTO\StreetDTO::class,
     ];
 
-    /**
-     * @var \SoapClient|null
-     */
-    private $client;
-    /**
-     * @var ConfigProvider
-     */
-    private $configProvider;
+    private ?\SoapClient $client;
 
-    public function __construct(ConfigProvider $configProvider)
-    {
-        $this->configProvider = $configProvider;
+    public function __construct(
+        private ConfigProvider $configProvider,
+    ) {
     }
 
     public function searchDivisions(Request\SearchDivisions $request): Response\SearchDivisions
@@ -60,9 +53,8 @@ class MeestClient
         return $this->request($request);
     }
 
-    public function searchStreetByNameAndCityIdRef(
-        Request\SearchStreetByNameAndCityIdRef $request
-    ): Response\SearchStreetByNameAndCityIdRef {
+    public function searchStreetByNameAndCityIdRef(Request\SearchStreetByNameAndCityIdRef $request): Response\SearchStreetByNameAndCityIdRef
+    {
         return $this->request($request);
     }
 
@@ -74,7 +66,10 @@ class MeestClient
     private function request(RequestInterface $request)
     {
         try {
-            return $this->getClient()->__soapCall($request->getEndpoint()->getValue(), [$request->toArray()]);
+            return $this->getClient()->__soapCall(
+                $request->getEndpoint()->value,
+                [$request->toArray()]
+            );
         } catch (\SoapFault $soapFault) {
             throw new MeestException($soapFault);
         }
@@ -88,7 +83,7 @@ class MeestClient
 
         $soapOptions = [
             'classmap' => self::CLASSMAP,
-            'location' => $this->configProvider->getApiUrl(),
+            'location' => $this->configProvider->apiUrl,
             'exceptions' => true,
             'features' => SOAP_SINGLE_ELEMENT_ARRAYS,
         ];

@@ -7,23 +7,17 @@ namespace Answear\MeestBundle\Request;
 use Answear\MeestBundle\Enum\RequestEnum;
 use Webmozart\Assert\Assert;
 
-class SearchCityByPostCode implements RequestInterface
+readonly class SearchCityByPostCode implements RequestInterface
 {
-    /**
-     * @var string
-     */
-    private $postCode;
-
-    public function __construct(string $postCode)
+    public function __construct(public string $postCode)
     {
         Assert::length($postCode, 5);
         Assert::digits($postCode);
-        $this->postCode = $postCode;
     }
 
     public function getEndpoint(): RequestEnum
     {
-        return RequestEnum::searchCityByPostCode();
+        return RequestEnum::SearchCityByPostCode;
     }
 
     public function toArray(): array
