@@ -11,5 +11,5 @@ class SearchCity implements ResponseInterface
     /**
      * @var CityDTO[]
      */
-    public $return;
+    public array $return;
 }

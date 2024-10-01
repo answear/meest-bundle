@@ -14,7 +14,7 @@ class GetApiVersion implements RequestInterface
 
     public function getEndpoint(): RequestEnum
     {
-        return RequestEnum::getApiVersion();
+        return RequestEnum::GetApiVersion;
     }
 
     public function toArray(): array

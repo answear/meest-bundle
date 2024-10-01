@@ -6,27 +6,17 @@ namespace Answear\MeestBundle\Request;
 
 use Answear\MeestBundle\Enum\RequestEnum;
 
-class SearchStreetByNameAndCityIdRef implements RequestInterface
+readonly class SearchStreetByNameAndCityIdRef implements RequestInterface
 {
-    /**
-     * @var string
-     */
-    private $cityId;
-
-    /**
-     * @var string
-     */
-    private $streetName;
-
-    public function __construct(string $cityId, string $streetName)
-    {
-        $this->cityId = $cityId;
-        $this->streetName = $streetName;
+    public function __construct(
+        private string $cityId,
+        private string $streetName,
+    ) {
     }
 
     public function getEndpoint(): RequestEnum
     {
-        return RequestEnum::searchStreetByNameAndCityIdRef();
+        return RequestEnum::SearchStreetByNameAndCityIdRef;
     }
 
     public function toArray(): array

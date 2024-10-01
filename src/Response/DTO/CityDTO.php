@@ -6,54 +6,23 @@ namespace Answear\MeestBundle\Response\DTO;
 
 class CityDTO
 {
-    /**
-     * @var string
-     */
-    public $cityIdRef;
+    public string $cityIdRef;
 
-    /**
-     * @var string
-     */
-    public $descriptionUA;
+    public string $descriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $descriptionRU;
+    public ?string $descriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $descriptionEN;
+    public ?string $descriptionEN;
 
-    /**
-     * @var string
-     */
-    public $regionDescriptionUA;
+    public string $regionDescriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $regionDescriptionRU;
+    public ?string $regionDescriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $regionDescriptionEN;
+    public ?string $regionDescriptionEN;
 
-    /**
-     * @var string
-     */
-    public $districtDescriptionUA;
+    public string $districtDescriptionUA;
 
-    /**
-     * @var string|null
-     */
-    public $districtDescriptionRU;
+    public ?string $districtDescriptionRU;
 
-    /**
-     * @var string|null
-     */
-    public $districtDescriptionEN;
-
+    public ?string $districtDescriptionEN;
 }

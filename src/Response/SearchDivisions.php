@@ -11,5 +11,5 @@ class SearchDivisions implements ResponseInterface
     /**
      * @var DivisionDTO[]|array
      */
-    public $return;
+    public array $return;
 }

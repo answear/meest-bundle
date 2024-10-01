@@ -43,7 +43,7 @@ public function __construct(
 public function pickupPoints(): void
 {
     /** @var SearchDivisionsResponse $response */
-    $response = $this->meestClient->request(new SearchDivisions(DivisionTypeEnum::novaPoshtaPoint()));
+    $response = $this->meestClient->request(new SearchDivisions(DivisionTypeEnum::NovaPoshtaPoint));
     
     /** @var DivisionDTO $division */
     foreach ($response->return as $division) {

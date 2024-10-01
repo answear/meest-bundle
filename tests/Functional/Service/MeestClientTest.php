@@ -19,20 +19,19 @@ use Answear\MeestBundle\Response\SearchCityByPostCode as SearchCityByPostCodeRes
 use Answear\MeestBundle\Response\SearchDivisions as SearchDivisionsResponse;
 use Answear\MeestBundle\Response\SearchStreetByNameAndCityIdRef as SearchStreetByNameAndCityIdRefResponse;
 use Answear\MeestBundle\Service\MeestClient;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class MeestClientTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function fetchesDivisions(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
-        $meestClientMock->method('searchDivisions')->with(new SearchDivisions(DivisionTypeEnum::collectionPoint()))
-            ->willReturn($this->getResponse(RequestEnum::SEARCH_DIVISIONS));
+        $meestClientMock->method('searchDivisions')->with(new SearchDivisions(DivisionTypeEnum::CollectionPoint))
+            ->willReturn($this->getResponse(RequestEnum::SearchDivisions->value));
 
-        $actualResponse = $meestClientMock->searchDivisions(new SearchDivisions(DivisionTypeEnum::collectionPoint()));
+        $actualResponse = $meestClientMock->searchDivisions(new SearchDivisions(DivisionTypeEnum::CollectionPoint));
 
         $this->assertEquals(
             $this->getExpectedSearchDivisionsResponse(),
@@ -40,14 +39,12 @@ class MeestClientTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function searchesCity(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
         $meestClientMock->method('searchCity')->with(new SearchCity('Одера'))
-            ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY));
+            ->willReturn($this->getResponse(RequestEnum::SearchCity->value));
 
         $actualResponse = $meestClientMock->searchCity(new SearchCity('Одера'));
 
@@ -57,14 +54,12 @@ class MeestClientTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function searchesCityByPostCode(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
         $meestClientMock->method('searchCityByPostCode')->with(new SearchCityByPostCode('46001'))
-            ->willReturn($this->getResponse(RequestEnum::SEARCH_CITY_BY_POST_CODE));
+            ->willReturn($this->getResponse(RequestEnum::SearchCityByPostCode->value));
 
         $actualResponse = $meestClientMock->searchCityByPostCode(new SearchCityByPostCode('46001'));
 
@@ -74,15 +69,13 @@ class MeestClientTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function searchesStreetByNameAndCityIdRef(): void
     {
         $meestClientMock = $this->createMock(MeestClient::class);
         $meestClientMock->method('searchStreetByNameAndCityIdRef')
             ->with(new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зел'))
-            ->willReturn($this->getResponse(RequestEnum::SEARCH_STREET_BY_NAME_AND_CITY_ID_REF));
+            ->willReturn($this->getResponse(RequestEnum::SearchStreetByNameAndCityIdRef->value));
 
         $actualResponse = $meestClientMock->searchStreetByNameAndCityIdRef(
             new SearchStreetByNameAndCityIdRef('0xb11200215aee3ebe11df749b62c3d54a', 'Зел')
@@ -107,7 +100,7 @@ class MeestClientTest extends TestCase
             ->getMock();
 
         $soapClientMock->expects($this->once())
-            ->method('__doRequest')->will($this->returnValue($responseXml));
+            ->method('__doRequest')->willReturn($responseXml);
 
         return $soapClientMock->__call($functionName, []);
     }
