@@ -10,19 +10,19 @@ class CityDTO
 
     public string $descriptionUA;
 
-    public ?string $descriptionRU;
+    public ?string $descriptionRU = null;
 
-    public ?string $descriptionEN;
+    public ?string $descriptionEN = null;
 
     public string $regionDescriptionUA;
 
-    public ?string $regionDescriptionRU;
+    public ?string $regionDescriptionRU = null;
 
-    public ?string $regionDescriptionEN;
+    public ?string $regionDescriptionEN = null;
 
     public string $districtDescriptionUA;
 
-    public ?string $districtDescriptionRU;
+    public ?string $districtDescriptionRU = null;
 
-    public ?string $districtDescriptionEN;
+    public ?string $districtDescriptionEN = null;
 }
