@@ -31,7 +31,7 @@ class MeestClient
         ResponseEnum::STREET_DTO => Response\DTO\StreetDTO::class,
     ];
 
-    private ?\SoapClient $client;
+    private ?\SoapClient $client = null;
 
     public function __construct(
         private ConfigProvider $configProvider,

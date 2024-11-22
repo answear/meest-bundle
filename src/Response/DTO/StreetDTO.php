@@ -10,13 +10,13 @@ class StreetDTO
 
     public string $descriptionUA;
 
-    public ?string $descriptionRU;
+    public ?string $descriptionRU = null;
 
-    public ?string $descriptionEN;
+    public ?string $descriptionEN = null;
 
     public string $streetTypeUA;
 
-    public ?string $streetTypeRU;
+    public ?string $streetTypeRU = null;
 
     public string $cityIdRef;
 }
