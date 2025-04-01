@@ -11,5 +11,5 @@ class SearchStreetByNameAndCityIdRef implements ResponseInterface
     /**
      * @var StreetDTO[]
      */
-    public array $return;
+    public array $return = [];
 }
