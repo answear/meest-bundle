@@ -31,6 +31,7 @@
                 <streetTypeUA>вул.</streetTypeUA>
                 <terminalCash>false</terminalCash>
                 <workingHoursUa>Пн 09:00 - 19:00; Вт 09:00 - 19:00; Ср 09:00 - 19:00; Чт 09:00 - 19:00; Пт 09:00 - 19:00; Сб --:-- - --:--; Нд --:-- - --:--</workingHoursUa>
+                <ZIPcode>12345</ZIPcode>
             </return>
             <return>
                 <active>true</active>
@@ -62,6 +63,7 @@
                 <streetTypeUA>вул.</streetTypeUA>
                 <terminalCash>false</terminalCash>
                 <workingHoursUa>Пн 09:00 - 19:00; Вт 09:00 - 19:00; Ср 09:00 - 19:00; Чт 09:00 - 19:00; Пт 09:00 - 19:00; Сб 09:00 - 15:00; Нд --:-- - --:--</workingHoursUa>
+                <ZIPcode>12345</ZIPcode>
             </return>
             <return>
                 <active>true</active>
@@ -93,6 +95,7 @@
                 <streetTypeUA>Просп.</streetTypeUA>
                 <terminalCash>false</terminalCash>
                 <workingHoursUa>Пн 09:00 - 17:00; Вт 09:00 - 17:00; Ср 09:00 - 17:00; Чт 09:00 - 17:00; Пт 09:00 - 17:00; Сб --:-- - --:--; Нд --:-- - --:--</workingHoursUa>
+                <ZIPcode>12345</ZIPcode>
             </return>
         </ns2:searchDivisionsResponse>
     </soap:Body>
