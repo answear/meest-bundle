@@ -63,4 +63,6 @@ class DivisionDTO
     public bool $terminalCash;
 
     public ?string $workingHoursUa = null;
+
+    public ?string $ZIPcode = null;
 }
