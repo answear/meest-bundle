@@ -9,7 +9,7 @@ use Answear\MeestBundle\Response\DTO\DivisionDTO;
 class SearchDivisions implements ResponseInterface
 {
     /**
-     * @var DivisionDTO[]|array
+     * @var DivisionDTO[]
      */
     public array $return = [];
 }
