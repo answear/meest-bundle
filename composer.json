@@ -6,6 +6,7 @@
   "require": {
     "php": "^8.4",
     "ext-soap": "*",
+    "symfony/dependency-injection": "^7.0.3|^8.0",
     "symfony/http-kernel": "^7.0.3|^8.0",
     "webmozart/assert": "^1.11|^2.0"
   },
